@@ -1,0 +1,17 @@
+[main]
+mountpoint = /tmp/mm1
+secrets = secret1, secret2
+
+[secret1]
+region = us-east-1
+secret = secret1
+dest = secret/destination/inside/mountpoint/secret1
+owner = user1:user1
+mode = 0600
+
+[secret2]
+region = us-east-1
+secret = secret2
+dest = secret/destination/inside/mountpoint/secret2
+owner = user2:user2
+mode = 0600

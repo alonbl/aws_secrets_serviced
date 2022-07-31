@@ -1,0 +1,15 @@
+include .codespell-ignore-words
+include .gitignore
+include .pre-commit-config.yaml
+include PACKAGING.md
+include aws-secrets-serviced-order.conf
+include config.ini.example
+include packaging/debian/.gitignore
+include packaging/debian/aws-secrets-serviced.install
+include packaging/debian/aws-secrets-serviced.service
+include packaging/debian/changelog
+include packaging/debian/compat
+include packaging/debian/control
+include packaging/debian/copyright
+include packaging/debian/rules
+include tox.ini

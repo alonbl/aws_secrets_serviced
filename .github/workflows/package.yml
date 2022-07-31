@@ -1,0 +1,41 @@
+name: Package
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  dist:
+    name: deb
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          path: work
+      - name: prepare
+        working-directory: work
+        run: |
+          ln -s packaging/debian
+      - name: dependencies
+        working-directory: work
+        run: |
+          sudo apt install -y build-essential devscripts equivs
+          sudo sudo mk-build-deps -i --tool="apt-get -y -o Debug::pkgProblemResolver=yes --no-install-recommends"
+      - name: package
+        working-directory: work
+        run: |
+          debuild -b -uc -us -i
+      - name: create-repo
+        run: |
+          mkdir deb-repo
+          cp *.deb deb-repo
+          cd deb-repo
+          dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
+      - name: archive.upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: deb-repo
+          path: |
+            deb-repo

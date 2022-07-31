@@ -1,0 +1,5 @@
+*-stamp
+*.debhelper
+*.substvars
+/aws-secrets-serviced/
+files
