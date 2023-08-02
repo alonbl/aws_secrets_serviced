@@ -18,7 +18,6 @@ $ sudo apt install build-essential devscripts equivs
 
 ```
 $ sudo mk-build-deps -i
-$ sudo apt remove aws-secrets-serviced-build-deps
 ```
 
 ### Build
@@ -35,4 +34,10 @@ Due to `deb` magics, before release version must be updated manually in `packagi
 
 ```
 $ dpkg -i ../aws-secrets-serviced*.deb
+```
+
+### Cleanup
+
+```
+$ sudo apt remove aws-secrets-serviced-build-deps
 ```

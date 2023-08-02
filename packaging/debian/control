@@ -2,7 +2,7 @@ Source: aws-secrets-serviced
 Section: utils
 Priority: optional
 Maintainer: Alon Bar-Lev <alon.barlev@gmail.com>
-Build-Depends: debhelper (>=11~), dh-python, python3-all, python3-setuptools
+Build-Depends: debhelper (>=11~), dh-python, pybuild-plugin-pyproject, python3-all
 Standards-Version: 4.1.4
 Homepage: https://github.com/alonbl/aws_secrets_serviced
 X-Python3-Version: >= 3.8

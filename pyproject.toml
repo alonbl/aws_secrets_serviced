@@ -5,6 +5,38 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "aws-secrets-serviced"
+readme = "README.md"
+version = "0.0.0"
+requires-python = ">=3.10"
+
+dependencies = [
+    "boto3",
+    "sdnotify",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy",
+    "boto3-stubs",
+    "pylint",
+    "pytest",
+]
+
+[[project.authors]]
+name = "Alon Bar-Lev"
+email = "alon.barlev@gmail.com"
+
+[project.scripts]
+aws-secrets-serviced = "aws_secrets_serviced.__main__:main"
+
+[tool.setuptools.packages.find]
+exclude = [
+    "build*",
+    "tests*",
+]
+
 [tool.black]
 line-length = 120
 
@@ -14,7 +46,10 @@ disallow_incomplete_defs = true
 disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = true
+explicit_package_bases = true
+namespace_packages = true
 no_implicit_optional = true
+show_error_codes = true
 strict = true
 strict_equality = true
 warn_redundant_casts = true
@@ -23,16 +58,15 @@ warn_unreachable = true
 
 [[tool.mypy.overrides]]
 module = [
-    "boto3.*",
     "sdnotify.*",
 ]
 ignore_missing_imports = true
 
 [tool.pylint.MASTER]
 disable = [
-    "missing-module-docstring",
     "missing-class-docstring",
     "missing-function-docstring",
+    "missing-module-docstring",
 ]
 
 [tool.pylint.FORMAT]
@@ -42,9 +76,14 @@ max-line-length = 120
 profile = "black"
 atomic = true
 combine_as_imports = true
-
-[tool.pytest.ini_options]
-addopts = "-ra"
-testpaths = [
-    "tests",
+known_first_party = [
+    "aws_secrets_serviced",
 ]
+
+[tool.check-manifest]
+ignore = [
+    "*.egg-info",
+    "*.egg-info/*",
+    "PKG-INFO",
+]
+ignore-default-rules = true

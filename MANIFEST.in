@@ -1,4 +1,4 @@
-include .codespell-ignore-words
+include .flake8
 include .gitignore
 include .pre-commit-config.yaml
 include PACKAGING.md
@@ -13,3 +13,4 @@ include packaging/debian/control
 include packaging/debian/copyright
 include packaging/debian/rules
 include tox.ini
+recursive-include .github *.yml
