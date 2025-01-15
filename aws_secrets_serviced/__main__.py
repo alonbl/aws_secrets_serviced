@@ -98,7 +98,7 @@ def _setup_log(
     logging.getLogger(None).addHandler(handler)
 
     logger = logging.getLogger("aws_secrets_serviced")
-    logger.setLevel(LOG_LEVELS.get(args.log_level or config.get("log_level"), logging.INFO))
+    logger.setLevel(LOG_LEVELS.get(args.log_level, config.get("log_level", logging.INFO)))
 
 
 def main() -> None:  # pylint: disable=too-many-locals, too-many-statements
