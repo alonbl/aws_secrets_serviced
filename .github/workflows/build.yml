@@ -15,9 +15,9 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: python.install
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.BUILD_PYTHON_FOR_BUILD }}
       - name: dependencies.install
@@ -28,7 +28,7 @@ jobs:
         run: |
           tox -e wheel-${{ env.BUILD_PYTHON_FOR_BUILD_ALIAS }}
       - name: archive.upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: jwt_authorizer-dist
           path: |
@@ -40,9 +40,9 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: python.install
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.BUILD_PYTHON_FOR_BUILD }}
       - name: dependencies.install
@@ -63,9 +63,9 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: python.install ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: dependencies.install

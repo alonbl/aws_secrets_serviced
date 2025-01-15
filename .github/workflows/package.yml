@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: work
       - name: prepare
@@ -34,7 +34,7 @@ jobs:
           cd deb-repo
           dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
       - name: archive.upload
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: deb-repo
           path: |

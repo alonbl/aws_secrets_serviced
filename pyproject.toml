@@ -32,9 +32,8 @@ email = "alon.barlev@gmail.com"
 aws-secrets-serviced = "aws_secrets_serviced.__main__:main"
 
 [tool.setuptools.packages.find]
-exclude = [
-    "build*",
-    "tests*",
+include = [
+    "aws_secrets_serviced*",
 ]
 
 [tool.black]
